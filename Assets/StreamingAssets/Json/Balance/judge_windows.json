@@ -1,6 +1,6 @@
 {
-    "perfectMs": 50.0,
-    "goodMs": 100.0,
+    "perfectMs": 60.0,
+    "goodMs": 120.0,
     "missMs": 200.0,
     "parryMs": 80.0
 }
