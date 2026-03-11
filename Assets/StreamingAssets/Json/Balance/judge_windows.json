@@ -1,0 +1,6 @@
+{
+    "perfectMs": 50.0,
+    "goodMs": 100.0,
+    "missMs": 200.0,
+    "parryMs": 80.0
+}

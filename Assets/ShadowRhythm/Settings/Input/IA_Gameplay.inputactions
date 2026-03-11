@@ -1,0 +1,95 @@
+{
+    "version": 1,
+    "name": "IA_Gameplay",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "1044ea30-7bb5-4d0f-bd64-e17ee0db35e6",
+            "actions": [
+                {
+                    "name": "Lift",
+                    "type": "Button",
+                    "id": "78caf171-910a-4879-bc36-7cdf4589cd1d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Shake",
+                    "type": "Button",
+                    "id": "0d5b6f08-7c80-42d7-9d78-16ae2483e934",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Flick",
+                    "type": "Button",
+                    "id": "26e5c46e-4daf-4021-b099-a47c18b940b6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Flash",
+                    "type": "Button",
+                    "id": "446fd1fc-9c47-4a4c-b79b-5b6f5bb60d4a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "489dd89f-8b86-4c64-a28c-e09ebb704802",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Lift",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b1e67f15-1651-4a0e-b920-ef77c84852fd",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5be950fc-4677-42a0-9217-cca75df8ed64",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f7b8e66-bdd4-4555-aff8-8b1cd61a85ce",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

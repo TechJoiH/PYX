@@ -1,0 +1,9 @@
+{
+    "songId": "001",
+    "displayName": "Shadow Dance",
+    "musicFileName": "shadow_dance",
+    "bpm": 120.0,
+    "offsetSeconds": 0.5,
+    "beatsPerBar": 4,
+    "previewStartMs": 5000
+}
