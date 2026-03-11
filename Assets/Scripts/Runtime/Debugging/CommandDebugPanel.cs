@@ -282,19 +282,19 @@ namespace ShadowRhythm.Debugging
 
             GUILayout.Label("═══ Command Reference ═══");
             GUILayout.Label("── Single ──");
-            GUILayout.Label("W/↑ = Lift (提势)");
-            GUILayout.Label("J   = Flick (轻斩)");
-            GUILayout.Label("K   = Shake (短刺)");
-            GUILayout.Label("L   = Flash (闪避)");
+            GUILayout.Label("↑ = Lift (抬起)");
+            GUILayout.Label("↓ = Shake (摇动)");
+            GUILayout.Label("← = Flick (轻弹)");
+            GUILayout.Label("→ = Flash (闪避)");
 
             GUILayout.Label("── Combo (同拍) ──");
-            GUILayout.Label("J+L = DashSlash (冲刺斩)");
-            GUILayout.Label("J+W = RisingStrike (上挑)");
-            GUILayout.Label("W+L = ParryGuard (弹反)");
+            GUILayout.Label("↑+← = 上劈");
+            GUILayout.Label("↓+← = 弹反");
+            GUILayout.Label("→+← = 闪击");
 
             GUILayout.Label("── Sequence (连续拍) ──");
-            GUILayout.Label("J→K = ComboStab (连刺)");
-            GUILayout.Label("K→J = CounterSlash (反击)");
+            GUILayout.Label("←→← = ComboStab (连刺)");
+            GUILayout.Label("→←→ = CounterSlash (反击)");
 
             GUILayout.EndVertical();
             GUILayout.EndArea();

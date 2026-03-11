@@ -139,13 +139,13 @@ namespace ShadowRhythm.Debugging
         /// </summary>
         private void OnGUI()
         {
-            // 左侧面板 - 当前状态
+            // 左下角 - 当前状态
             GUILayout.BeginArea(new Rect(10, 220, 300, 400));
             GUILayout.BeginVertical("box");
 
             GUILayout.Label("═══ Input Debug Panel ═══");
 
-            // 当前拍点信息
+            // 当前节拍信息
             if (beatClockSystem != null && beatClockSystem.IsRunning)
             {
                 var frame = beatClockSystem.CurrentBeatFrame;
@@ -201,11 +201,11 @@ namespace ShadowRhythm.Debugging
             GUILayout.BeginArea(new Rect(Screen.width - 250, 10, 240, 150));
             GUILayout.BeginVertical("box");
             GUILayout.Label("═══ Controls ═══");
-            GUILayout.Label("上  = Lift (提)");
-            GUILayout.Label("左     = Flick (拨)");
-            GUILayout.Label("下     = Shake (抖)");
-            GUILayout.Label("右     = Flash (闪)");
-            GUILayout.Label("Space  = Pause/Resume");
+            GUILayout.Label("↑ = Lift (抬起)");
+            GUILayout.Label("↓ = Shake (摇动)");
+            GUILayout.Label("← = Flick (轻弹)");
+            GUILayout.Label("→ = Flash (闪避)");
+            GUILayout.Label("Space = Pause/Resume");
             GUILayout.EndVertical();
             GUILayout.EndArea();
         }

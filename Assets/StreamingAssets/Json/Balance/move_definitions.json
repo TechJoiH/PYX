@@ -1,0 +1,59 @@
+{
+  "moves": [
+    {
+      "moveId": "flick_light",
+      "displayName": "Light Flick",
+      "commandType": "Flick",
+      "startupBeats": 0,
+      "activeBeats": 1,
+      "recoveryBeats": 1,
+      "damage": 10,
+      "canParry": false,
+      "canBeCancelled": false
+    },
+    {
+      "moveId": "shake_stab",
+      "displayName": "Quick Stab",
+      "commandType": "Shake",
+      "startupBeats": 0,
+      "activeBeats": 1,
+      "recoveryBeats": 1,
+      "damage": 8,
+      "canParry": false,
+      "canBeCancelled": false
+    },
+    {
+      "moveId": "dash_slash",
+      "displayName": "Dash Slash",
+      "commandType": "DashSlash",
+      "startupBeats": 0,
+      "activeBeats": 1,
+      "recoveryBeats": 1,
+      "damage": 20,
+      "canParry": false,
+      "canBeCancelled": false
+    },
+    {
+      "moveId": "rising_strike",
+      "displayName": "Rising Strike",
+      "commandType": "RisingStrike",
+      "startupBeats": 0,
+      "activeBeats": 1,
+      "recoveryBeats": 2,
+      "damage": 15,
+      "canParry": false,
+      "canBeCancelled": false
+    },
+    {
+      "moveId": "combo_stab",
+      "displayName": "Combo Stab",
+      "commandType": "ComboStab",
+      "startupBeats": 0,
+      "activeBeats": 1,
+      "recoveryBeats": 1,
+      "damage": 12,
+      "canParry": false,
+      "canBeCancelled": true
+    }
+  ]
+}

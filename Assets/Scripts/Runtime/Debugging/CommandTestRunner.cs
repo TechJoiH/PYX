@@ -17,7 +17,7 @@ namespace ShadowRhythm.Debugging
         [SerializeField] private AudioClip testMusicClip;
         [SerializeField] private float startDelay = 1f;
 
-        [Header("组件引用")]
+        [Header("场景组件")]
         [SerializeField] private MusicPlaybackService musicPlaybackService;
         [SerializeField] private BeatClockSystem beatClockSystem;
         [SerializeField] private GameplayInputRouter inputRouter;
@@ -64,13 +64,13 @@ namespace ShadowRhythm.Debugging
 
         private void InitializeTest()
         {
-            Debug.Log("========== 板块3 命令解析测试 ==========");
+            Debug.Log("========== 层级3 命令测试开始 ==========");
 
-            // 1. 加载歌曲配置
+            // 1. 加载歌曲数据
             var songMeta = _jsonLoadBridge.LoadSongMeta(songId);
             if (songMeta == null)
             {
-                Debug.LogError($"[CommandTest] 无法加载歌曲配置: {songId}");
+                Debug.LogError($"[CommandTest] 无法加载歌曲数据: {songId}");
                 return;
             }
 
@@ -144,10 +144,10 @@ namespace ShadowRhythm.Debugging
             commandResolver.Enable();
 
             Debug.Log("[CommandTest] ═══════════════════════════════════════");
-            Debug.Log("[CommandTest] 命令测试说明：");
-            Debug.Log("[CommandTest] 单键: W=提势, J=轻斩, K=短刺, L=闪避");
-            Debug.Log("[CommandTest] 同拍组合: J+L=冲刺斩, J+W=上挑, W+L=弹反");
-            Debug.Log("[CommandTest] 序列技: J→K=连刺, K→J=反击");
+            Debug.Log("[CommandTest] 命令输入说明：");
+            Debug.Log("[CommandTest] 单键: ↑=抬起, ↓=摇动, ←=轻弹, →=闪避");
+            Debug.Log("[CommandTest] 同拍组合: ↑+←=上劈, ↓+←=弹反, →+←=闪击");
+            Debug.Log("[CommandTest] 连续键: ←→←=连刺, →←→=反击");
             Debug.Log("[CommandTest] ═══════════════════════════════════════");
             Debug.Log("[CommandTest] 按 Space 暂停/恢复 | R 重新开始 | Tab 查看统计");
         }
@@ -194,7 +194,7 @@ namespace ShadowRhythm.Debugging
             }
 
             StartTest();
-            Debug.Log("[CommandTest] === 已重新开始 ===");
+            Debug.Log("[CommandTest] === 测试重新开始 ===");
         }
 
         private void OnBeatTick(BeatFrame frame)

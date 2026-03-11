@@ -92,6 +92,11 @@ namespace ShadowRhythm.Command
                 return PatternMatchResult.None;
 
             var input = bestInput.Value;
+
+            // ★ 关键修改：Miss 判定不触发命令
+            if (input.judgeResult == RhythmJudgeResult.Miss)
+                return PatternMatchResult.None;
+
             CommandType cmdType = input.inputType switch
             {
                 RhythmInputType.Lift => CommandType.Lift,
@@ -128,6 +133,10 @@ namespace ShadowRhythm.Command
             if (!AreInputsSimultaneous(context.CurrentBeatInputs, SimultaneousToleranceMs))
                 return PatternMatchResult.None;
 
+            // ★ 关键修改：检查是否有有效输入（非 Miss）
+            if (!HasValidInput(context.CurrentBeatInputs))
+                return PatternMatchResult.None;
+
             CommandType cmdType = CommandType.None;
 
             // 拨+闪 = 冲刺斩
@@ -154,7 +163,7 @@ namespace ShadowRhythm.Command
             if (cmdType == CommandType.None)
                 return PatternMatchResult.None;
 
-            // 计算最佳时机
+            // 获取最佳时机
             var bestInput = context.GetBestInputAtCurrentBeat();
             bool isPerfect = bestInput.HasValue && bestInput.Value.judgeResult == RhythmJudgeResult.Perfect;
             float deltaMs = bestInput.HasValue ? bestInput.Value.deltaMs : 0f;
@@ -171,11 +180,11 @@ namespace ShadowRhythm.Command
         }
 
         /// <summary>
-        /// 匹配两拍序列技
+        /// 匹配连续拍序列技
         /// </summary>
         public PatternMatchResult TryMatchSequence(CommandContext context)
         {
-            // 需要有上一拍和当前拍的输入
+            // 需要上一拍和当前拍的输入
             if (context.PreviousBeatInputs.Count == 0 || context.CurrentBeatInputs.Count == 0)
                 return PatternMatchResult.None;
 
@@ -192,6 +201,11 @@ namespace ShadowRhythm.Command
                 return PatternMatchResult.None;
 
             if (prevInput.Value.isConsumed || currInput.Value.isConsumed)
+                return PatternMatchResult.None;
+
+            // ★ 关键修改：两个输入都必须是非 Miss
+            if (prevInput.Value.judgeResult == RhythmJudgeResult.Miss ||
+                currInput.Value.judgeResult == RhythmJudgeResult.Miss)
                 return PatternMatchResult.None;
 
             CommandType cmdType = CommandType.None;
@@ -224,7 +238,7 @@ namespace ShadowRhythm.Command
             if (cmdType == CommandType.None)
                 return PatternMatchResult.None;
 
-            // 以当前拍的时机为准
+            // 以当前拍点时机为准
             bool isPerfect = currInput.Value.judgeResult == RhythmJudgeResult.Perfect;
 
             return new PatternMatchResult
@@ -239,7 +253,22 @@ namespace ShadowRhythm.Command
         }
 
         /// <summary>
-        /// 检查输入是否在时间容差内同时按下
+        /// 检查输入列表中是否有有效输入（非 Miss）
+        /// </summary>
+        private bool HasValidInput(List<InputSample> inputs)
+        {
+            foreach (var input in inputs)
+            {
+                if (!input.isConsumed && input.judgeResult != RhythmJudgeResult.Miss)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 检查输入是否在时间容差内同时发生
         /// </summary>
         private bool AreInputsSimultaneous(List<InputSample> inputs, float toleranceMs)
         {
@@ -267,7 +296,7 @@ namespace ShadowRhythm.Command
         }
 
         /// <summary>
-        /// 获取输入列表中的主要输入（最接近拍点的）
+        /// 获取输入列表中的主要输入（最接近拍点）
         /// </summary>
         private InputSample? GetPrimaryInput(List<InputSample> inputs)
         {
@@ -276,7 +305,8 @@ namespace ShadowRhythm.Command
 
             foreach (var input in inputs)
             {
-                if (!input.isConsumed)
+                // ★ 关键修改：跳过 Miss 判定的输入
+                if (!input.isConsumed && input.judgeResult != RhythmJudgeResult.Miss)
                 {
                     float absDelta = Mathf.Abs(input.deltaMs);
                     if (absDelta < bestDelta)
